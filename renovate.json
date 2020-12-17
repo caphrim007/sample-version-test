@@ -1,0 +1,26 @@
+{
+    "regexManagers": [{
+        "fileMatch": [
+            "(^|/)k8s\/.*\\.ya?ml$"
+        ],
+        "matchStrings": [
+            "image:\\s*\\'?\\\"?(?<depName>[^:]+):(?<currentValue>[^\\s\\'\\\"]+)\\'?\\\"?\\s*"
+        ],
+        "datasourceTemplate": "docker",
+        "versioningTemplate": "docker"
+    }],
+    "packageRules": [
+        {
+            "paths": ["**/*"],
+            "enabled": false
+        },
+        {
+            "paths": ["k8s/base/defaults.*"],
+            "packagePatterns": [".*"],
+            "additionalBranchPrefix": "{{parentDir}}-",
+            "enabled": true
+        }
+    ],
+    "enabledManagers": ["regex"]
+}
+
